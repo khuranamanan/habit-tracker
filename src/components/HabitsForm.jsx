@@ -1,6 +1,7 @@
 import Box from "@mui/material/Box";
 
 import { forwardRef, useState } from "react";
+import { toast } from "react-toastify";
 import { v4 as uuid } from "uuid";
 
 const style = {
@@ -24,6 +25,13 @@ const HabitForm = forwardRef(({ habitData, onSave, onClose }, ref) => {
   });
 
   const handleSave = () => {
+    if (
+      !habitForm.habitName.trim() ||
+      !habitForm.habitFrequency.trim() ||
+      !habitForm.habitStart.trim()
+    ) {
+      toast.error("Fill all Fields");
+    }
     if (
       habitForm.habitName &&
       habitForm.habitFrequency &&
