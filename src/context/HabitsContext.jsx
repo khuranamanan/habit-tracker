@@ -5,7 +5,7 @@ export const HabitsContext = createContext();
 
 export function HabitsProvider({ children }) {
   const [state, dispatch] = useReducer(habitsReducer, habitsInitialState);
-  console.log(state);
+
   return (
     <HabitsContext.Provider
       value={{
